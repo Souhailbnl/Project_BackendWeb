@@ -15,6 +15,25 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                     @auth
+                         @if (auth()->user()->is_admin)
+                             <x-nav-link :href="route('admin.nieuws.index')" :active="request()->routeIs('admin.nieuws.*')">
+                                Nieuws beheren
+                            </x-nav-link>
+                    @endif
+                    @endauth
+                    <x-nav-link :href="route('admin.faq-categorieen.index')" :active="request()->routeIs('admin.faq-categorieen.*')">
+                        FAQ beheren
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('admin.faq-vragen.index') }}" :active="request()->routeIs('admin.faq-vragen.*')">
+                        FAQ-vragen
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('contact.show') }}" :active="request()->routeIs('contact.*')">
+                        Contacteer ons
+                    </x-nav-link>
+
                 </div>
             </div>
 
